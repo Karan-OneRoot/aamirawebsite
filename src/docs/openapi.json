@@ -1,0 +1,136 @@
+{
+  "openapi": "3.0.3",
+  "info": { "title": "Aamira API", "version": "1.0.0" },
+  "servers": [{ "url": "http://localhost:3000/api/v1" }],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "summary": "Register",
+        "requestBody": { "required": true },
+        "responses": { "201": { "description": "Created" } }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Login",
+        "requestBody": { "required": true },
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/products": {
+      "get": {
+        "summary": "List products",
+        "responses": { "200": { "description": "OK" } }
+      },
+      "post": {
+        "summary": "Create product",
+        "responses": { "201": { "description": "Created" } }
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "summary": "Get product",
+        "responses": {
+          "200": { "description": "OK" },
+          "404": { "description": "Not found" }
+        }
+      },
+      "put": {
+        "summary": "Update product",
+        "responses": { "200": { "description": "OK" } }
+      },
+      "delete": {
+        "summary": "Delete product",
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "List users",
+        "responses": { "200": { "description": "OK" } }
+      },
+      "post": {
+        "summary": "Create user",
+        "responses": { "201": { "description": "Created" } }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "summary": "Get user",
+        "responses": {
+          "200": { "description": "OK" },
+          "404": { "description": "Not found" }
+        }
+      },
+      "put": {
+        "summary": "Update user",
+        "responses": { "200": { "description": "OK" } }
+      },
+      "delete": {
+        "summary": "Delete user",
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/preferences/{userId}": {
+      "get": {
+        "summary": "List preferences",
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/preferences/{userId}/{key}": {
+      "put": {
+        "summary": "Set preference",
+        "responses": { "200": { "description": "OK" } }
+      },
+      "delete": {
+        "summary": "Delete preference",
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/categories": {
+      "get": {
+        "summary": "List categories",
+        "responses": { "200": { "description": "OK" } }
+      },
+      "post": {
+        "summary": "Create category",
+        "responses": { "201": { "description": "Created" } }
+      }
+    },
+    "/categories/{id}": {
+      "put": {
+        "summary": "Update category",
+        "responses": { "200": { "description": "OK" } }
+      },
+      "delete": {
+        "summary": "Delete category",
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/orders": {
+      "post": {
+        "summary": "Create order (auth required)",
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "201": { "description": "Created" } }
+      }
+    },
+    "/orders/{id}": {
+      "get": {
+        "summary": "Get order",
+        "responses": {
+          "200": { "description": "OK" },
+          "404": { "description": "Not found" }
+        }
+      }
+    }
+  }
+}
